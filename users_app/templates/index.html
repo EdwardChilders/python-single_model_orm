@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>All The Users</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in all_users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email_address }}</td>
+        <td>{{ user.age }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <hr>
+  <fieldset>
+    <legend><h1>Add A User</h1></legend>
+    <form action="/users" method="post">
+      {% csrf_token %}
+      <p>First_Name: <input type="text" name="first_name"></p>
+      <p>Last_Name: <input type="text" name="last_name"></p>
+      <p>Email: <input type="text" name="email"></p>
+      <p>Age: <input type="number" name="age"></p>
+      <button type="submit">Add</button>
+    </form>
+  </fieldset>
+</body>
+</html>
